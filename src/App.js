@@ -8,6 +8,7 @@ import Incident from "./pages/Incident";
 import RouteIn from "./pages/RouteIn";
 import Severity from "./pages/Severity";
 import Geospatial from "./pages/Geospatial";
+
 // import Navbar from "./components/Navbar";
 
 function App() {
