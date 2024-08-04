@@ -1,8 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
-
-// Notice accident report in CBD
+import PlotPyComponent from "../components/PlotPyComponent.js";
 
 const Incident = () => {
   return (
@@ -16,6 +15,9 @@ const Incident = () => {
           <h1 className="text-white text-6xl font-bold">
             Notice accident report in CBD
           </h1>
+        </div>
+        <div className="relative z-10 mt-[38vh] p-5">
+          <PlotPyComponent />
         </div>
       </div>
       <Footer />
