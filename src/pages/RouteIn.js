@@ -164,7 +164,14 @@ const RouteIn = () => {
   return (
     <div className="relative h-screen bg-slate-20">
       {/* Landing Section */}
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-r from-green-500 via-geen-200 to-blue-500"></div>
+      <div className="flex-grow relative">
+      <img
+            src={`${process.env.PUBLIC_URL}/routes.jpg`}
+            alt="Routes"
+            className="object-cover w-full h-full absolute top-0 left-0 z-0"
+          />
+
+      {/* <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-r from-green-500 via-geen-200 to-blue-500"></div> */}
       <div className="relative z-10">
         <Navbar />
       </div>
@@ -228,6 +235,7 @@ const RouteIn = () => {
             </form>
           </div>
         </div>
+      </div>
       </div>
       <Footer />
     </div>
