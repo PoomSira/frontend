@@ -82,7 +82,7 @@ function Home() {
       
 
       <div className="grid grid-cols-3 gap-4 p-5">
-        <div className="col-span-2 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+        <div className="col-span-2 bg-white shadow-md border border-zinc-300 rounded-md ">
           <img
             className="rounded-lg w-full"
             src={`${process.env.PUBLIC_URL}/cycle2.jpg`}
@@ -108,7 +108,7 @@ function Home() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 pr-5 pl-5">
-        <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+        <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md">
           <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative">
             <img
               className="rounded-lg w-full"
