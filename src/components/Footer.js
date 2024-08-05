@@ -5,9 +5,6 @@ const Footer = () => {
     <footer className="bg-black text-white py-4">
       <div className="container mx-auto text-center">
         <p>
-          &copy; 2024 Cyclink Monash University IE Group Project TA30. All
-          rights reserved.
-          <br />
           Cyclink respectfully acknowledges the Traditional Owners of the land
           we govern, the Wurundjeri Woi-wurrung and Bunurong / Boon Wurrung
           peoples of the Kulin and pays respect to their Elders past and
@@ -16,6 +13,9 @@ const Footer = () => {
           more than 2000 generations. We accept the invitation in the Uluru
           Statement from the Heart and are committed to walking together to
           build a better future.
+          <br />
+          &copy; 2024 Cyclink Monash University IE Group Project TA30. All
+          rights reserved.
         </p>
       </div>
     </footer>
