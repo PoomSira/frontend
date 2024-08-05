@@ -89,12 +89,15 @@ function Home() {
             alt="cycle"
           />
         </div>
+
+        
+
         <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
           <h3 className="text-black text-3xl font-bold pb-5">
             What we <span className="text-green-500">do</span>?
           </h3>
           <p className="text-white text-center text-xl bg-black p-4 rounded-lg">
-            <span className="text-green-500 font-bold">Cylink</span> is
+            <span className="text-green-500 font-bold">Cyclink</span> is
             dedicated to enhancing the safety and enjoyment of cycling in the
             Melbourne CBD. We aim to create a more cyclist-friendly environment
             by implementing effective safety measures and raising public
