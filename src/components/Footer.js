@@ -14,6 +14,7 @@ const Footer = () => {
           Statement from the Heart and are committed to walking together to
           build a better future.
           <br />
+          <br />
           &copy; 2024 Cyclink Monash University IE Group Project TA30. All
           rights reserved.
         </p>
