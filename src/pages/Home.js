@@ -58,25 +58,7 @@ function Home() {
         </div>
 
         <div className="relative z-10 mt-10 p-5 flex justify-center">
-          <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative w-4/5">
-            {/* <img
-              className="rounded-lg w-full"
-              src={`${process.env.PUBLIC_URL}/cycle2.jpg`}
-              alt="cycle"
-            />
-            <div className="absolute inset-0 flex items-center justify-center p-6">
-              <p className="text-white text-center text-3xl bg-black bg-opacity-5 p-4 rounded-lg">
-                Cylink is dedicated to enhancing the safety and enjoyment of
-                cycling in the Melbourne CBD. We aim to create a more
-                cyclist-friendly environment by implementing effective safety
-                measures and raising public awareness about cycling safety. By
-                encouraging more people to cycle, we can reduce traffic
-                congestion, improve air quality, and contribute to a significant
-                reduction in carbon emissions. Join us in making Melbourne a
-                greener, healthier, and a more bike-friendly city.
-              </p>
-            </div> */}
-          </div>
+          <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative w-4/5"></div>
         </div>
       </div>
 
