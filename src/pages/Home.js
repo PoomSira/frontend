@@ -79,6 +79,7 @@ function Home() {
           </div>
         </div>
       </div>
+      
 
       <div className="grid grid-cols-3 gap-4 p-5">
         <div className="col-span-2 bg-white shadow-md border border-zinc-300 rounded-md p-5">
