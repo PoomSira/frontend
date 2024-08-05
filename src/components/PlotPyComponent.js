@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const PlotPyComponent = () => {
+const PlotComponent = () => {
   const [image, setImage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -11,6 +12,7 @@ const PlotPyComponent = () => {
         setImage(response.data.image);
       } catch (error) {
         console.error("Error fetching the plot:", error);
+        setError("Failed to load image.");
       }
     };
 
@@ -20,6 +22,7 @@ const PlotPyComponent = () => {
   return (
     <div>
       <h1>Plot from Python via ASP.NET Core API</h1>
+      {error && <p>{error}</p>}
       {image ? (
         <img
           src={`data:image/png;base64,${image}`}
@@ -33,4 +36,4 @@ const PlotPyComponent = () => {
   );
 };
 
-export default PlotPyComponent;
+export default PlotComponent;

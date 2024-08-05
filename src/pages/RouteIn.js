@@ -13,13 +13,82 @@ const RouteIn = () => {
   const melbourneCBD = [144.9631, -37.8136];
   const [markers, setMarkers] = useState([]);
 
+  const colorMap = {
+    "Bicycle Route": "hsla(202, 100%, 50%, 1)",
+    "Route from API": "hsla(157, 100%, 62%, 0.66)",
+  };
+
   useEffect(() => {
     const ttMap = tt.map({
       key: "7abimzQOcxJ0GMskhLcvoai4bAA1Zb4s", // Replace with your TomTom API key
       container: mapElement.current,
       center: melbourneCBD, // Corrected center coordinates [longitude, latitude]
-      zoom: 10,
+      zoom: 12,
     });
+
+    ttMap.on("load", () => {
+      fetch(
+        "/bicycle-routes-including-informal-on-road-and-off-road-routes.geojson"
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("GeoJSON data loaded:", data);
+
+          ttMap.addLayer({
+            id: "bicycle-routes",
+            type: "line",
+            source: {
+              type: "geojson",
+              data: data,
+            },
+            paint: {
+              "line-color": "hsla(202, 100%, 50%, 1)",
+              "line-width": 3,
+            },
+          });
+
+          console.log("GeoJSON layer added to map");
+        })
+        .catch((error) => {
+          console.error("Error loading GeoJSON data:", error);
+        });
+    });
+    // Load GeoJSON data and add it to the map
+    fetch(
+      "/bicycle-routes-including-informal-on-road-and-off-road-routes.geojson"
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("GeoJSON data loaded:", data);
+
+        ttMap.addLayer({
+          id: "bicycle-routes",
+          type: "line",
+          source: {
+            type: "geojson",
+            data: data,
+          },
+          paint: {
+            "line-color": "hsla(202, 100%, 50%, 1)",
+            "line-width": 3,
+          },
+        });
+
+        console.log("GeoJSON layer added to map");
+      })
+      .catch((error) => {
+        console.error("Error loading GeoJSON data:", error);
+      });
 
     setMap(ttMap);
 
@@ -129,8 +198,8 @@ const RouteIn = () => {
               data: geojson,
             },
             paint: {
-              "line-color": "#4a90e2",
-              "line-width": 6,
+              "line-color": "hsla(157, 100%, 62%, 0.66)",
+              "line-width": 8,
             },
           };
 
@@ -165,77 +234,102 @@ const RouteIn = () => {
     <div className="relative h-screen bg-slate-20">
       {/* Landing Section */}
       <div className="flex-grow relative">
-      <img
-            src={`${process.env.PUBLIC_URL}/routes.jpg`}
-            alt="Routes"
-            className="object-cover w-full h-full absolute top-0 left-0 z-0"
-          />
+        <img
+          src={`${process.env.PUBLIC_URL}/routes.jpg`}
+          alt="Routes"
+          className="object-cover w-full h-full absolute top-0 left-0 z-0"
+        />
 
-      {/* <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-r from-green-500 via-geen-200 to-blue-500"></div> */}
-      <div className="relative z-10">
-        <Navbar />
-      </div>
-      <div className="absolute top-0 left-0 w-full h-1/2 flex items-center justify-center z-5">
-        <h1 className="text-white text-6xl font-bold">
-          Explore safety route in CBD
-        </h1>
-      </div>
+        {/* <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-r from-green-500 via-geen-200 to-blue-500"></div> */}
+        <div className="relative z-10">
+          <Navbar />
+        </div>
+        <div className="absolute top-0 left-0 w-full h-1/2 flex items-center justify-center z-5">
+          <h1 className="text-black text-6xl font-bold bg-white p-4 rounded-md">
+            Explore <span className="text-green-500">safety</span> route in CBD
+          </h1>
+        </div>
 
-      {/* Grid Section */}
-      <div className="relative z-10 mt-[38vh] p-5">
-        <div className="grid grid-cols-5 gap-4">
-          <div className="col-span-4 bg-white shadow-md border border-zinc-300 rounded-md p-5">
-            {/* Display TomTom map here */}
-            <div
-              ref={mapElement}
-              className="w-full h-full"
-              style={{ height: "500px" }}
-            ></div>
-          </div>
-          <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
-            <form onSubmit={handleRoute}>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="from"
+        {/* Grid Section */}
+        <div className="relative z-10 mt-[25vh] p-5">
+          <div className="grid grid-cols-5 gap-4">
+            <div className="col-span-4 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+              {/* Display TomTom map here */}
+              <div
+                ref={mapElement}
+                className="w-full h-full"
+                style={{ height: "500px" }}
+              ></div>
+            </div>
+            <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+              <form onSubmit={handleRoute}>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="from"
+                  >
+                    From
+                  </label>
+                  <input
+                    id="from"
+                    type="text"
+                    value={from}
+                    onChange={(e) => setFrom(e.target.value)}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter starting location"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 text-sm font-bold mb-2"
+                    htmlFor="to"
+                  >
+                    To
+                  </label>
+                  <input
+                    id="to"
+                    type="text"
+                    value={to}
+                    onChange={(e) => setTo(e.target.value)}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Enter destination"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
-                  From
-                </label>
-                <input
-                  id="from"
-                  type="text"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter starting location"
-                />
+                  Direction
+                </button>
+              </form>
+
+              {/* Legend Section */}
+              <div className="bg-white shadow-md border border-zinc-300 rounded-md p-5 mt-5">
+                <h2 className="text-gray-700 text-lg font-bold mb-4">Legend</h2>
+                {Object.entries(colorMap).map(([label, color]) => (
+                  <div
+                    key={label}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      margin: "5px 0",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "20px",
+                        height: "5px",
+                        backgroundColor: color,
+                        marginRight: "10px",
+                      }}
+                    ></div>
+                    <span>{label}</span>
+                  </div>
+                ))}
               </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="to"
-                >
-                  To
-                </label>
-                <input
-                  id="to"
-                  type="text"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter destination"
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Direction
-              </button>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
       </div>
       <Footer />
     </div>

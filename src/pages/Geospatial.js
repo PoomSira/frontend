@@ -11,6 +11,13 @@ const Geospatial = () => {
   const [map, setMap] = useState(null);
   const melbourneCBD = [144.9631, -37.8136];
 
+  const colorMap = {
+    "Bicycle Route": "hsla(202, 100%, 50%, 1)",
+    "Low Severity": "#650099", // Purple
+    "Medium Severity": "#FEFF32", // Yellow
+    "High Severity": "#FE0000", // Red
+  };
+
   const [filters, setFilters] = useState({
     year: "",
     speedZone: "",
@@ -28,9 +35,9 @@ const Geospatial = () => {
   const getColorBySeverity = (severity) => {
     switch (severity) {
       case "1":
-        return "#650099"; // Yellow
+        return "#650099"; // Purple
       case "2":
-        return "#FEFF32"; // Orange
+        return "#FEFF32"; // Yellow
       case "3":
         return "#FE0000"; // Red
       default:
@@ -311,6 +318,34 @@ const Geospatial = () => {
                   </select>
                 </div>
               </form>
+
+              {/* Legend Section */}
+              <div className="bg-white shadow-md border border-zinc-300 rounded-md p-5 mt-5">
+                <h2 className="text-gray-700 text-lg font-bold mb-4">
+                  Severity Level
+                </h2>
+                {Object.entries(colorMap).map(([label, color]) => (
+                  <div
+                    key={label}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      margin: "5px 0",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: label === "Bicycle Route" ? "20px" : "20px",
+                        height: label === "Bicycle Route" ? "5px" : "20px",
+                        backgroundColor: color,
+                        marginRight: "10px",
+                        borderRadius: label === "Bicycle Route" ? "0" : "50%",
+                      }}
+                    ></div>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
