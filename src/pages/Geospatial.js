@@ -228,7 +228,7 @@ const Geospatial = () => {
 
         <div className="relative z-10 mt-[25vh] p-5">
           <div className="grid grid-cols-5 gap-4">
-            <div className="col-span-4 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+            <div className="col-span-4 bg-white shadow-md border border-zinc-300 rounded-md p-1">
               {/* Display TomTom map here */}
               <div
                 ref={mapElement}

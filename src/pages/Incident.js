@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 
@@ -52,57 +52,14 @@ const Incident = () => {
         <div className="relative z-10">
           <Navbar />
         </div>
-
-        <div className="relative z-10 mt-10 p-5 flex justify-center">
+        <div className="absolute top-0 left-0 w-full h-1/2 flex items-center justify-center z-5">
           <h1 className="text-black text-6xl font-bold bg-white p-4 rounded-md">
             Cyclink: <span className="text-green-500">Safe</span> Place for
             Cyclists
           </h1>
         </div>
-
-        <div className="relative z-10 mt-10 p-5 flex justify-center">
-          <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative w-4/5"></div>
-        </div>
+        <div className="relative z-10 mt-[38vh] p-5"></div>
       </div>
-
-      <div className="grid grid-cols-3 gap-4 p-5">
-        <div className="col-span-2 bg-white shadow-md border border-zinc-300 rounded-md p-5">
-          <img
-            className="rounded-t-lg"
-            src={`${process.env.PUBLIC_URL}/${selectedOption}`}
-            alt="Plot"
-          />
-        </div>
-        <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-2xl font-bold mb-2"
-              htmlFor="year"
-            >
-              Analytics
-            </label>
-            <select
-              id="year"
-              name="year"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              onChange={handleSelectionChange}
-            >
-              <option value="plot1.png">
-                Bicycle Accident Age Distribution
-              </option>
-              <option value="plot2.png">Bicycle Accident Injury Level</option>
-              <option value="plot3.png">Number of Accidents by Time</option>
-              <option value="plot4.png">
-                Number of Accident on Speed Zone
-              </option>
-            </select>
-          </div>
-          <p className="text-white text-center text-xl bg-black p-4 rounded-lg mt-1">
-            {content}
-          </p>
-        </div>
-      </div>
-
       <Footer />
     </div>
   );

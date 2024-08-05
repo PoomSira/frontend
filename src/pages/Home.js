@@ -61,21 +61,25 @@ function Home() {
           <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative w-4/5"></div>
         </div>
       </div>
+      
 
       <div className="grid grid-cols-3 gap-4 p-5">
-        <div className="col-span-2 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+        <div className="col-span-2 bg-white shadow-md border border-zinc-300 rounded-md ">
           <img
             className="rounded-lg w-full"
             src={`${process.env.PUBLIC_URL}/cycle2.jpg`}
             alt="cycle"
           />
         </div>
+
+        
+
         <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
           <h3 className="text-black text-3xl font-bold pb-5">
             What we <span className="text-green-500">do</span>?
           </h3>
           <p className="text-white text-center text-xl bg-black p-4 rounded-lg">
-            <span className="text-green-500 font-bold">Cylink</span> is
+            <span className="text-green-500 font-bold">Cyclink</span> is
             dedicated to enhancing the safety and enjoyment of cycling in the
             Melbourne CBD. We aim to create a more cyclist-friendly environment
             by implementing effective safety measures and raising public
@@ -89,7 +93,7 @@ function Home() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 pr-5 pl-5">
-        <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+        <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md">
           <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative">
             <img
               className="rounded-lg w-full"
