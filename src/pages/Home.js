@@ -4,7 +4,6 @@
 // import Navbar from "../components/Navbar.js";
 // import Footer from "../components/Footer.js";
 
-
 // function Home() {
 //   return (
 //     <div className="flex flex-col min-h-screen">
@@ -15,9 +14,7 @@
 //             className="object-cover w-full h-full absolute top-0 left-0 z-0"
 //           />
 //         {/* <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-r from-green-500 via-geen-200 to-blue-500"> */}
-          
-      
-        
+
 //         <div className="relative z-10">
 //           <Navbar />
 //         </div>
@@ -48,40 +45,70 @@ function Home() {
           alt="Landing"
           className="object-cover w-full h-full absolute top-0 left-0 z-0"
         />
-        
+
         <div className="relative z-10">
           <Navbar />
         </div>
 
         <div className="relative z-10 mt-10 p-5 flex justify-center">
-          <h1 className="text-white text-6xl font-bold">
-            Cyclink: Safe Place for Cyclists
+          <h1 className="text-black text-6xl font-bold bg-white p-4 rounded-md">
+            Cyclink: <span className="text-green-500">Safe</span> Place for
+            Cyclists
           </h1>
         </div>
-      
+
         <div className="relative z-10 mt-10 p-5 flex justify-center">
-        <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative w-4/5">
-            <img
+          <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative w-4/5">
+            {/* <img
               className="rounded-lg w-full"
               src={`${process.env.PUBLIC_URL}/cycle2.jpg`}
               alt="cycle"
             />
             <div className="absolute inset-0 flex items-center justify-center p-6">
               <p className="text-white text-center text-3xl bg-black bg-opacity-5 p-4 rounded-lg">
-              Cylink is dedicated to enhancing the safety and enjoyment of cycling in the Melbourne CBD. 
-              We aim to create a more cyclist-friendly environment by implementing effective safety measures 
-              and raising public awareness about cycling safety. By encouraging more people to cycle, we can reduce 
-              traffic congestion, improve air quality, and contribute to a significant reduction in carbon emissions. 
-              Join us in making Melbourne a greener, healthier, and a more bike-friendly city.
+                Cylink is dedicated to enhancing the safety and enjoyment of
+                cycling in the Melbourne CBD. We aim to create a more
+                cyclist-friendly environment by implementing effective safety
+                measures and raising public awareness about cycling safety. By
+                encouraging more people to cycle, we can reduce traffic
+                congestion, improve air quality, and contribute to a significant
+                reduction in carbon emissions. Join us in making Melbourne a
+                greener, healthier, and a more bike-friendly city.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
+      </div>
 
+      <div className="grid grid-cols-3 gap-4 p-5">
+        <div className="col-span-2 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+          <img
+            className="rounded-lg w-full"
+            src={`${process.env.PUBLIC_URL}/cycle2.jpg`}
+            alt="cycle"
+          />
         </div>
+        <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+          <h3 className="text-black text-3xl font-bold pb-5">
+            What we <span className="text-green-500">do</span>?
+          </h3>
+          <p className="text-white text-center text-xl bg-black p-4 rounded-lg">
+            <span className="text-green-500 font-bold">Cylink</span> is
+            dedicated to enhancing the safety and enjoyment of cycling in the
+            Melbourne CBD. We aim to create a more cyclist-friendly environment
+            by implementing effective safety measures and raising public
+            awareness about cycling safety. By encouraging more people to cycle,
+            we can reduce traffic congestion, improve air quality, and
+            contribute to a significant reduction in carbon emissions. Join us
+            in making Melbourne a greener, healthier, and a more bike-friendly
+            city.
+          </p>
+        </div>
+      </div>
 
-        <div className="relative z-10 mt-10 p-5 flex justify-center">
-        <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative w-4/5">
+      <div className="grid grid-cols-1 gap-4 pr-5 pl-5">
+        <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
+          <div className="block rounded-lg bg-white text-black shadow-lg dark:bg-surface-dark relative">
             <img
               className="rounded-lg w-full"
               src={`${process.env.PUBLIC_URL}/city.jpg`}
@@ -89,69 +116,79 @@ function Home() {
             />
             <div className="absolute inset-0 flex items-center justify-center p-6">
               <p className="text-white text-center text-5xl bg-black bg-opacity-20 p-4 rounded-lg">
-                In Victoria, <span className="font-bold">17.1%</span> of residents reported cycling in the past week, 
-                while <span className="font-bold">38.7%</span> did so over the past year. This translates to approximately 
-                <span className="font-bold"> 1,128,900</span> residents cycling in a typical week and 
-                <span className="font-bold"> 2,562,000</span> cycling at least once annually.
+                In Victoria, <span className="font-bold">17.1%</span> of
+                residents reported cycling in the past week, while{" "}
+                <span className="font-bold">38.7%</span> did so over the past
+                year. This translates to approximately
+                <span className="font-bold"> 1,128,900</span> residents cycling
+                in a typical week and
+                <span className="font-bold"> 2,562,000</span> cycling at least
+                once annually.
               </p>
             </div>
           </div>
         </div>
-       
-               {/* New Card Section */}
-               <div className="grid-cols-1 sm:grid md:grid-cols-3">
-          <div className="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white text-surface shadow-lg dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
-            <a href="#!">
-              <img
-                className="rounded-t-lg"
-                src={`${process.env.PUBLIC_URL}/eco.jpg`}
-                alt="eco"
-              />
-            </a>
-            <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">Saving the world</h5>
-              <p className="mb-4 text-base">
-              If bikes and ebikes became 22% of all transport trips in all cities worldwide, greenhouse gas emissions and energy use would be 47% reduced by 2050
-              </p>
-            </div>
+      </div>
+
+      {/* New Card Section */}
+      <div className="grid grid-cols-1 gap-6 sm:grid md:grid-cols-3">
+        <div className="flex flex-col mx-3 mt-6 self-start rounded-lg bg-white text-surface shadow-md dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
+          <a href="#!">
+            <img
+              className="rounded-t-lg"
+              src={`${process.env.PUBLIC_URL}/eco.jpg`}
+              alt="eco"
+            />
+          </a>
+          <div className="flex flex-col flex-grow p-6">
+            <h5 className="mb-2 text-xl font-medium leading-tight">
+              Saving the world
+            </h5>
+            <p className="mb-4 text-base">
+              If bikes and ebikes became 22% of all transport trips in all
+              cities worldwide, greenhouse gas emissions and energy use would be
+              47% reduced by 2050
+            </p>
           </div>
-
-          <div className="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white text-surface shadow-lg dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
-            <a href="#!">
-              <img
-                className="rounded-t-lg"
-                src={`${process.env.PUBLIC_URL}/cost_saving.png`}
-                alt="cost saving"
-              />
-            </a>
-            <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight">Cost savings</h5>
-              <p className="mb-4 text-base">
-              Regular cyclists in Melbourne contribute to $780 million in cost savings
-              </p>
-            </div>
-          </div>
-
-          <div className="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white text-surface shadow-lg dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
-            <a href="#!">
-              <img
-                className="rounded-t-lg"
-                src={`${process.env.PUBLIC_URL}/potential-trips.png`}
-                alt="Potential Trips"
-              />
-            </a>
-            <div className="p-6">
-              <h5 className="mb-2 text-xl font-medium leading-tight">safety Concern</h5>
-              <p className="mb-4 text-base">
-              Concern for safety remain the primary barrier
-              </p>
-            </div>
-          </div>
-
-
         </div>
 
+        <div className="flex flex-col mx-3 mt-6 self-start rounded-lg bg-white text-surface shadow-lg dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
+          <a href="#!">
+            <img
+              className="rounded-t-lg"
+              src={`${process.env.PUBLIC_URL}/cost_saving.png`}
+              alt="cost saving"
+            />
+          </a>
+          <div className="flex flex-col flex-grow p-6">
+            <h5 className="mb-2 text-xl font-medium leading-tight">
+              Cost savings
+            </h5>
+            <p className="mb-4 text-base">
+              Regular cyclists in Melbourne contribute to $780 million in cost
+              savings
+            </p>
+          </div>
+        </div>
 
+        <div className="flex flex-col mx-3 mt-6 self-start rounded-lg bg-white text-surface shadow-lg dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
+          <a href="#!">
+            <img
+              className="rounded-t-lg"
+              src={`${process.env.PUBLIC_URL}/potential-trips.png`}
+              alt="Potential Trips"
+            />
+          </a>
+          <div className="flex flex-col flex-grow p-6">
+            <h5 className="mb-2 text-xl font-medium leading-tight">
+              Safety Concern
+            </h5>
+            <p className="mb-4 text-base">
+              Concern for safety remains the primary barrier
+            </p>
+          </div>
+        </div>
+      </div>
 
       <Footer />
     </div>
