@@ -21,7 +21,7 @@ const RouteIn = () => {
             </span>
           </h1>
         </div>
-        <div className="z-10 w-full max-w-screen-xl mx-auto bg-white shadow-md border border-zinc-300 rounded-md p-5 my-4 items-center">
+        <div className="z-10 w-full max-w-screen-xl mx-auto bg-white shadow-md border border-zinc-300 rounded-md p-4 my-4 items-center">
           <div className="flex justify-center items-center w-full h-full">
             <MapboxMap showDirections={isRoutePage} />
           </div>
