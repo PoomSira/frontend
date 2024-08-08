@@ -195,6 +195,38 @@ const MapboxMap = ({ showDirections, filters, mixUse }) => {
                 ],
               },
             });
+
+            const popup = new mapboxgl.Popup({
+              closeButton: false,
+              closeOnClick: false,
+            });
+
+            map.current.on("mouseenter", "unclustered-point", (e) => {
+              map.current.getCanvas().style.cursor = "pointer";
+
+              const coordinates = e.features[0].geometry.coordinates.slice();
+              const properties = e.features[0].properties;
+              const description = `
+                <strong>Accident Date:</strong> ${properties.ACCIDENT_DATE}<br>
+                <strong>Accident Type:</strong> ${properties.ACCIDENT_TYPE_DESC}<br>
+                <strong>Severity:</strong> ${properties.SEVERITY}<br>
+                <strong>Speed Zone:</strong> ${properties.SPEED_ZONE}
+              `;
+
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+              }
+
+              popup
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map.current);
+            });
+
+            map.current.on("mouseleave", "unclustered-point", () => {
+              map.current.getCanvas().style.cursor = "";
+              popup.remove();
+            });
           }
         })
         .catch((error) => console.error("Error loading CSV data:", error));

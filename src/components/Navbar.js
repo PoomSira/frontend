@@ -15,7 +15,6 @@ const Navbar = () => {
           <CustomLink to="/incident">Incident</CustomLink>
           <CustomLink to="/route">Route</CustomLink>
           <CustomLink to="/geospatial">Geospatial</CustomLink>
-          <CustomLink to="/severity">Severity</CustomLink>
         </div>
       </div>
     </nav>
