@@ -61,9 +61,9 @@ const Geospatial = () => {
       <div className="z-10 w-full backdrop-blur-sm bg-blur-3xl sm:-top-80">
         <div className="relative z-10 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
           <Navbar />
-          <h1 className="text-black text-6xl font-bold py-36 rounded-md">
-            Explore safety route in CBD{" "}
-            <span className="mt-6 text-lg font-light leading-8 text-gray-900">
+          <h1 className="text-white text-6xl font-bold py-36 rounded-md">
+            Find the safest routes in the CBD with incident updates{" "}
+            <span className="mt-6 text-lg font-light leading-8 text-white">
               <br />
               Empowering cyclists with safe routes and incident updates for a
               worry-free ride.

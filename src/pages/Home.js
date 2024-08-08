@@ -19,63 +19,72 @@ function Home() {
         <Navbar />
       </header>
 
-      {/* Main Content */}
-      <div className="relative isolate px-6 pt-14 lg:px-8 flex-grow bg-cover bg-center" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/why-cycle.png)` }}>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl textsha">
-              Cyclink
-              <br />
-              Safe Place for Cyclists
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-white">
-              Empowering cyclists with safe routes and incident updates for a
-              worry-free ride.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#NavMenu"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Get started
-              </a>
+{/* Main Content */}
 
-            </div>
-          </div>
-        </div>
+<div className="relative isolate px-6 pt-14 lg:px-8 flex-grow">
+  {/* Blurred Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center filter blur-sm"
+    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/why-cycle.png)` }}
+  ></div>
+
+  {/* Content Overlay */}
+  <div className="relative mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <div className="text-center">
+      <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl textsha">
+        Cyclink
+        <br />
+        Safe Place for Cyclists
+      </h1>
+      <p className="mt-6 text-lg leading-8 text-white">
+        Empowering cyclists with safe routes and incident updates for a
+        worry-free ride.
+      </p>
+      <div className="mt-10 flex items-center justify-center gap-x-6">
+        <a
+          href="#NavMenu"
+          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transform transition-transform duration-300 hover:scale-105"
+        >
+          Get started
+        </a>
+      </div>
+    </div>
+  </div>
      
 
-{/*Navigation bar*/} 
- <div id="NavMenu" className="relative z-10 mt-10 p-5 flex justify-center">
-   <div className="block rounded-lg bg-white text-black shadow-lg relative w-4/5">
-     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5">
-       <div className="flex flex-col items-center text-center justify-center transform transition-transform duration-300 hover:scale-105">
-         <a href="#why-cycle" className="text-black flex flex-col items-center">
-           <img src={`${process.env.PUBLIC_URL}/bicycle.svg`} alt="Why Cycle" className="w-20 h-20 mb-2 transition-transform duration-300 ease-in-out transform hover:scale-110" />
-           <h3 className="text-xl font-bold hover:text-blue-600 transition-colors duration-300">Why Cycle?</h3>
-         </a>
-       </div>
-       <div className="flex flex-col items-center text-center justify-center transform transition-transform duration-300 hover:scale-105">
-         <a href="#incidents" className="text-black flex flex-col items-center">
-           <img src={`${process.env.PUBLIC_URL}/Incident-icon.png`} alt="Incidents" className="w-20 h-20 mb-2 transition-transform duration-300 ease-in-out transform hover:scale-110" />
-           <h3 className="text-xl font-bold hover:text-blue-600 transition-colors duration-300">Incidents</h3>
-         </a>
-       </div>
-       <div className="flex flex-col items-center text-center justify-center transform transition-transform duration-300 hover:scale-105">
-         <a href="#safe-routes" className="text-black flex flex-col items-center">
+{/* Navigation bar */}
+<div id="NavMenu" className="relative z-10 mt-10 p-5 flex justify-center">
+  <div className="block rounded-xl bg-gray-100 bg-opacity-45 backdrop-blur-md text-black shadow-lg relative w-4/5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-5">
+      <div className="flex flex-col items-center text-center justify-center transform transition-transform duration-300 hover:scale-105">
+        <a href="#why-cycle" className="text-black flex flex-col items-center">
+          <img src={`${process.env.PUBLIC_URL}/bicycle.svg`} alt="Why Cycle" className="w-20 h-20 mb-2 transition-transform duration-300 ease-in-out transform hover:scale-110" />
+          <h3 className="text-xl font-bold hover:text-blue-600 transition-colors duration-300">Why Cycle?</h3>
+        </a>
+      </div>
+      <div className="flex flex-col items-center text-center justify-center transform transition-transform duration-300 hover:scale-105">
+        <a href="#incidents" className="text-black flex flex-col items-center">
+          <img src={`${process.env.PUBLIC_URL}/Incident-icon.png`} alt="Incidents" className="w-20 h-20 mb-2 transition-transform duration-300 ease-in-out transform hover:scale-110" />
+          <h3 className="text-xl font-bold hover:text-blue-600 transition-colors duration-300">Incidents</h3>
+        </a>
+      </div>
+      <div className="flex flex-col items-center text-center justify-center transform transition-transform duration-300 hover:scale-105">
+        <a href="#safe-routes" className="text-black flex flex-col items-center">
           <img src={`${process.env.PUBLIC_URL}/map.png`} alt="Safe Routes" className="w-20 h-20 mb-2 transition-transform duration-300 ease-in-out transform hover:scale-110" />
           <h3 className="text-xl font-bold hover:text-blue-600 transition-colors duration-300">Safe Routes</h3>
-         </a>
+        </a>
       </div>
       <div className="flex flex-col items-center text-center justify-center transform transition-transform duration-300 hover:scale-105">
         <a href="#geospatial-map" className="text-black flex flex-col items-center">
           <img src={`${process.env.PUBLIC_URL}/geospatial.png`} alt="Geospatial Map" className="w-20 h-20 mb-2 transition-transform duration-300 ease-in-out transform hover:scale-110" />
-           <h3 className="text-xl font-bold hover:text-blue-600 transition-colors duration-300">Geospatial Incident Map</h3>
+          <h3 className="text-xl font-bold hover:text-blue-600 transition-colors duration-300">Geospatial Incident Map</h3>
         </a>
       </div>
     </div>
-   </div>
- </div>
+  </div>
+</div>
+
+
 
       </div>
       
