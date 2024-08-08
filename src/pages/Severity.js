@@ -57,15 +57,21 @@ const Severity = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
-      <div className="z-10 w-full backdrop-blur-sm bg-white/70">
-        <div className="relative z-10">
+    <div className="flex flex-col min-h-screen">
+      <div className="z-10 w-full backdrop-blur-sm bg-blur-3xl sm:-top-80">
+        <div className="relative z-10 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
           <Navbar />
-          <h1 className="text-black text-6xl font-bold p-4 rounded-md">
-            Explore <span className="text-green-500">safety</span> route in CBD
+          <h1 className="text-black text-6xl font-bold py-36 rounded-md">
+            Explore safety route in CBD{" "}
+            <span className="mt-6 text-lg font-light leading-8 text-gray-900">
+              <br />
+              Empowering cyclists with safe routes and incident updates for a
+              worry-free ride.
+            </span>
           </h1>
         </div>
-        <div className="z-10 w-full max-w-screen-xl mx-auto bg-white shadow-md border border-zinc-300 rounded-md p-5 mb-4 items-center">
+
+        <div className="z-10 w-full max-w-screen-xl mx-auto bg-white shadow-md border border-zinc-300 rounded-md p-5 my-4 items-center">
           <div className="relative flex justify-center items-center w-full h-full">
             <div className="z-10 w-1/4 absolute top-3 left-3 bg-white p-2 shadow-lg border border-zinc-300 rounded-md">
               <div className="grid grid-rows-6 pb-3">
