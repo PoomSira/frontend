@@ -61,7 +61,6 @@ const Incident = () => {
               className="flex justify-center items-center w-full h-[25rem]"
             ></iframe>
           </div>
-          <p>Write Someting</p>
         </div>
       </div>
       <Footer />
