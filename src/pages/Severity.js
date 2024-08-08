@@ -1,150 +1,152 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar.js";
-import "@tomtom-international/web-sdk-maps/dist/maps.css";
-import tt from "@tomtom-international/web-sdk-maps";
-import ttServices from "@tomtom-international/web-sdk-services";
+import MapboxMap from "../components/MapboxMap.js";
 import Footer from "../components/Footer.js";
+import FilterSeverity from "../components/FilterSeverity.js";
 
 const Severity = () => {
-  const mapElement = useRef();
-  const [map, setMap] = useState(null);
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-  const melbourneCBD = [144.9631, -37.8136];
-  const [markers, setMarkers] = useState([]);
-  
-  useEffect(() => {
-    const ttMap = tt.map({
-      key: "7abimzQOcxJ0GMskhLcvoai4bAA1Zb4s", // Replace with your TomTom API key
-      container: mapElement.current,
-      center: melbourneCBD, // Corrected center coordinates [longitude, latitude]
-      zoom: 10,
-    });
+  const isRoutePage = window.location.pathname === "/route";
+  const mixUse = true;
+  const yearOptions = [
+    "All",
+    "2012",
+    "2013",
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+  ];
+  const speedZoneOptions = ["All", "30", "40", "50", "60"];
+  const accidentTypeOptions = [
+    "All",
+    "Collision with vehicle",
+    "Struck Pedestrian",
+    "Collision with a fixed object",
+    "No collision and no object struck",
+  ];
 
-    setMap(ttMap);
-
-    return () => {
-      if (ttMap) {
-        ttMap.remove();
-      }
-    };
-  }, []);
-  
-  const geocode = async (address) => {
-    try {
-      const response = await ttServices.services.fuzzySearch({
-        key: "7abimzQOcxJ0GMskhLcvoai4bAA1Zb4s", // Replace with TomTom API key
-        query: address,
-      });
-
-      console.log(`Geocode response for "${address}":`, response);
-
-      if (response && response.results && response.results.length > 0) {
-        const { lng, lat } = response.results[0].position;
-        console.log(`Position for "${address}":`, { lng, lat });
-        return [lng, lat]; // Ensure longitude is first, then latitude
-      } else {
-        throw new Error(`Geocoding failed for address: ${address}`);
-      }
-    } catch (error) {
-      console.error(`Geocoding error: ${error}`);
-      throw error;
-    }
+  const clusterColor = {
+    "2 - 99 accidents": "#f1f075",
+    ">= 100 accidents": "#51bbd6",
   };
 
-  const addMarker = (lngLat, icon, map) => {
-    const markerElement = document.createElement("div");
-    markerElement.className = "marker";
-    markerElement.style.backgroundImage = `url(${icon})`;
-    markerElement.style.backgroundSize = "cover";
-    markerElement.style.width = "30px";
-    markerElement.style.height = "30px";
-
-    const marker = new tt.Marker({
-      element: markerElement,
-    })
-      .setLngLat(lngLat)
-      .addTo(map);
-
-    return marker;
+  const severityColor = {
+    Low: "#0051ad",
+    Medium: "#7900ad",
+    High: "#FE0000",
   };
 
-return (
-    <div className="relative h-screen bg-slate-20">
-      {/* Landing Section */}
+  const [filters, setFilters] = useState({
+    year: "All",
+    speedZone: "All",
+    accidentType: "All",
+  });
 
-      <div className="flex-grow relative">
-      <img
-            src={`${process.env.PUBLIC_URL}/serverity.jpg`}
-            alt="Serverity"
-            className="object-cover w-full h-full absolute top-0 left-0 z-0"
-          />
+  const handleFilterChange = (name, value) => {
+    console.log(`Updating filter: ${name} to ${value}`);
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
 
-      {/* <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-r from-green-500 via-geen-200 to-blue-500"></div> */}
-      <div className="relative z-10">
-        <Navbar />
-      </div>
-      <div className="absolute top-0 left-0 w-full h-1/2 flex items-center justify-center z-5">
-        <h1 className="text-white text-6xl font-bold">
-          Explore safety route in CBD
-        </h1>
-      </div>
-
-      {/* Grid Section */}
-      <div className="relative z-10 mt-[38vh] p-5">
-        <div className="grid grid-cols-5 gap-4">
-          <div className="col-span-4 bg-white shadow-md border border-zinc-300 rounded-md p-5">
-            {/* Display TomTom map here */}
-            <div
-              ref={mapElement}
-              className="w-full h-full"
-              style={{ height: "500px" }}
-            ></div>
-          </div>
-          <div className="col-span-1 bg-white shadow-md border border-zinc-300 rounded-md p-5">
-            {/* <form onSubmit={handleRoute}>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="from"
-                >
-                  From
-                </label>
-                <input
-                  id="from"
-                  type="text"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter starting location"
+  return (
+    <div className="flex flex-col min-h-screen bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%">
+      <div className="z-10 w-full backdrop-blur-sm bg-white/70">
+        <div className="relative z-10">
+          <Navbar />
+          <h1 className="text-black text-6xl font-bold p-4 rounded-md">
+            Explore <span className="text-green-500">safety</span> route in CBD
+          </h1>
+        </div>
+        <div className="z-10 w-full max-w-screen-xl mx-auto bg-white shadow-md border border-zinc-300 rounded-md p-5 mb-4 items-center">
+          <div className="relative flex justify-center items-center w-full h-full">
+            <div className="z-10 w-1/4 absolute top-3 left-3 bg-white p-2 shadow-lg border border-zinc-300 rounded-md">
+              <div className="grid grid-rows-6 pb-3">
+                <FilterSeverity
+                  label="FILTER BY YEAR"
+                  options={yearOptions}
+                  onChange={(value) => handleFilterChange("year", value)}
                 />
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="to"
-                >
-                  To
-                </label>
-                <input
-                  id="to"
-                  type="text"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter destination"
+                <FilterSeverity
+                  label="FILTER BY SPEED ZONE"
+                  options={speedZoneOptions}
+                  onChange={(value) => handleFilterChange("speedZone", value)}
                 />
+                <FilterSeverity
+                  label="FILTER BY ACCIDENT TYPE"
+                  options={accidentTypeOptions}
+                  onChange={(value) =>
+                    handleFilterChange("accidentType", value)
+                  }
+                />
+                <div className="block text-left">
+                  <h2 className="mt-4 text-sm font-medium leading-6 text-gray-900">
+                    CLUSTER
+                  </h2>
+                  {Object.entries(clusterColor).map(([label, color]) => (
+                    <div
+                      key={label}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        margin: "5px 0",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: label === "Bicycle Route" ? "20px" : "20px",
+                          height: label === "Bicycle Route" ? "5px" : "20px",
+                          backgroundColor: color,
+                          marginRight: "10px",
+                          borderRadius: label === "Bicycle Route" ? "0" : "50%",
+                        }}
+                      ></div>
+                      <span>{label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="block text-left">
+                  <h2 className="mt-4 text-sm font-medium leading-6 text-gray-900">
+                    SEVERITY LEVEL
+                  </h2>
+                  {Object.entries(severityColor).map(([label, color]) => (
+                    <div
+                      key={label}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        margin: "5px 0",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: label === "Bicycle Route" ? "20px" : "20px",
+                          height: label === "Bicycle Route" ? "5px" : "20px",
+                          backgroundColor: color,
+                          marginRight: "10px",
+                          borderRadius: label === "Bicycle Route" ? "0" : "50%",
+                        }}
+                      ></div>
+                      <span>{label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              >
-                Direction
-              </button>
-            </form> */}
+            </div>
+            <MapboxMap
+              showDirections={isRoutePage}
+              filters={filters}
+              mixUse={mixUse}
+            />
           </div>
         </div>
-      </div>
       </div>
       <Footer />
     </div>
