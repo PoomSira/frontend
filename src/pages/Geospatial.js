@@ -6,7 +6,7 @@ import FilterSeverity from "../components/FilterSeverity.js";
 
 const Geospatial = () => {
   const isRoutePage = window.location.pathname === "/route";
-  const mixUse = false;
+  const mixUse = true;
   const yearOptions = [
     "All",
     "2012",
@@ -70,6 +70,7 @@ const Geospatial = () => {
             </span>
           </h1>
         </div>
+
         <div className="z-10 w-full max-w-screen-xl mx-auto bg-white shadow-md border border-zinc-300 rounded-md p-5 my-4 items-center">
           <div className="relative flex justify-center items-center w-full h-full">
             <div className="z-10 w-1/4 absolute top-3 left-3 bg-white p-2 shadow-lg border border-zinc-300 rounded-md">
